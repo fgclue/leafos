@@ -7,6 +7,14 @@
 #include "util.h"
 #include "mem.h"
 
+#define BLACK_ON_WHITE 0x0F
+#define WOB_GREEN 0x0A
+#define WOB_RED 0x04
+#define WOB_BLUE 0x01
+#define WOB_CYAN 0x03
+#define WOB_MAGENTA 0x05
+#define WOB_YELLOW 0x06
+
 void* alloc(int n) {
     int *ptr = (int *) mem_alloc(n * sizeof(int));
     if (ptr == NULL_POINTER) {
@@ -29,19 +37,33 @@ void* alloc(int n) {
 
 void start_kernel() {
     clear_screen();
-    print_string("Installing interrupt service routines (ISRs).\n");
+    print_string("Installing interrupt service routines (ISRs). ");
     isr_install();
+    print_string("[");
+    print_string_color("OK", WOB_GREEN);
+    print_string("]\n");
 
-    print_string("Enabling external interrupts.\n");
+    print_string("Enabling external interrupts. ");
     asm volatile("sti");
+    print_string("[");
+    print_string_color("OK", WOB_GREEN);
+    print_string("]\n");
 
-    print_string("Initializing keyboard (IRQ 1).\n");
+    print_string("Initializing keyboard (IRQ 1). ");
     init_keyboard();
+    print_string("[");
+    print_string_color("OK", WOB_GREEN);
+    print_string("]\n");
 
-    print_string("Initializing dynamic memory.\n");
+    print_string("Initializing dynamic memory. ");
     init_dynamic_mem();
+    print_string("[");
+    print_string_color("OK", WOB_GREEN);
+    print_string("]\n");
 
-    print_string("dddddOS dev\n");
+    print_string_color("\nleafOS", WOB_RED);
+    print_string(" dev ");
+    print_string_color("0.10\n", WOB_CYAN);
 
     int *ptr1 = alloc(5);
 
@@ -55,7 +77,7 @@ void start_kernel() {
 
     mem_free(ptr3);
 
-    print_string("dddddISO > /test/ $ ");
+    print_string_color("\nleafOS", WOB_RED);print_string(" >");print_string_color(" /test/", WOB_CYAN);print_string_color(" $ ", WOB_GREEN);
 }
 
 void execute_command(char *input) {
@@ -64,26 +86,31 @@ void execute_command(char *input) {
         asm volatile("hlt");
     }
     if (compare_string(input, "HELP") == 0) {
-        print_string("dddddOS Help\n\nHELP - Shows help.\nDISPOSE - Stops the CPU.");
-        print_string("\ndddddISO > /test/ $ ");
-        return 0;
+        print_string("leafOS Help\n\nHELP - Shows help.\nDISPOSE - Stops the CPU.");
+        print_string_color("\nleafOS", WOB_RED);print_string(" >");print_string_color(" /test/", WOB_CYAN);print_string_color(" $ ", WOB_GREEN);
+        return;
     }
     if (compare_string(input, "TOUCH") == 0) {
         print_string("TOUCH: Creates a file.");
-        print_string("\ndddddISO > /test/ $ ");
-        return 0;
+        print_string_color("\nleafOS", WOB_RED);print_string(" >");print_string_color(" /test/", WOB_CYAN);print_string_color(" $ ", WOB_GREEN);
+        return;
     }
     if (compare_string(input, "MKDIR") == 0) {
         print_string("MKDIR: Makes a directory.");
-        print_string("\ndddddISO > /test/ $ ");
-        return 0;
+        print_string_color("\nleafOS", WOB_RED);print_string(" >");print_string_color(" /test/", WOB_CYAN);print_string_color(" $ ", WOB_GREEN);
+        return;
     }
     if (compare_string(input, "LS") == 0) {
         print_string("LS: Lists all directories and files.");
-        print_string("\ndddddISO > /test/ $ ");
-        return 0;
+        print_string_color("\nleafOS", WOB_RED);print_string(" >");print_string_color(" /test/", WOB_CYAN);print_string_color(" $ ", WOB_GREEN);
+        return;
+    }
+    if (compare_string(input, "CLEAR") == 0) {
+        clear_screen();
+        print_string_color("\nleafOS", WOB_RED);print_string(" >");print_string_color(" /test/", WOB_CYAN);print_string_color(" $ ", WOB_GREEN);
+        return;
     }
     print_string("Unknown command: ");
     print_string(input);
-    print_string("\n > /test/ ! ");
+    print_string_color("\nleafOS", WOB_RED);print_string(" >");print_string_color(" /test/", WOB_CYAN);print_string_color(" $ ", WOB_GREEN);
 }
