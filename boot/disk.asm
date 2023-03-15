@@ -26,28 +26,21 @@ disk_load:
     popa
     ret
 
+
 disk_error:
     mov bx, DISK_ERROR
     call print16
     call print16_nl
     mov dh, ah ; ah = error code, dl = disk drive that dropped the error
     call print16_hex ; check out the code at http://stanislavs.org/helppc/int_13-1.html
-    %ifidn __OUTPUT_FORMAT__, elf64
-        jmpq disk_loop
-    %else
-        jmp disk_loop
-    %endif
+    jmp disk_loop
 
 sectors_error:
     mov bx, SECTORS_ERROR
     call print16
 
 disk_loop:
-    %ifidn __OUTPUT_FORMAT__, elf64
-        jmpq $
-    %else
-        jmp $
-    %endif
+    jmp $
 
 DISK_ERROR: db "Disk read error", 0
 SECTORS_ERROR: db "Incorrect number of sectors read", 0
