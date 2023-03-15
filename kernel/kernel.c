@@ -3,6 +3,7 @@
 #include "../cpu/timer.h"
 #include "../drivers/display.h"
 #include "../drivers/keyboard.h"
+#include "../drivers/eval.h"
 
 #include "util.h"
 #include "mem.h"
@@ -110,12 +111,7 @@ void execute_command(char *input) {
         print_string_color("\nleafOS", WOB_RED);print_string(" >");print_string_color(" /test/", WOB_CYAN);print_string_color(" $ ", WOB_GREEN);
         return;
     }
-<<<<<<< HEAD
-<<<<<<< HEAD
-    if (compare_string(input, "eval") == 0) {
-=======
     if (compare_string(input, "EVAL") == 0) {
->>>>>>> parent of 452b946 (x64 Test 1)
         print_string_color("Running ", WOB_GREEN);
         print_string("C ");
         print_string_color("Code", WOB_CYAN);
@@ -124,8 +120,6 @@ void execute_command(char *input) {
         print_string_color("\nleafOS", WOB_RED);print_string(" >");print_string_color(" /test/", WOB_CYAN);print_string_color(" $ ", WOB_GREEN);
         return;
     }
-=======
->>>>>>> parent of e33bb2c (y)
     print_string("Unknown command: ");
     print_string(input);
     print_string_color("\nleafOS", WOB_RED);print_string(" >");print_string_color(" /test/", WOB_CYAN);print_string_color(" $ ", WOB_GREEN);
