@@ -5,6 +5,17 @@
 #define MAX_COLS 80
 #define WHITE_ON_BLACK 0x0f
 
+
+// Colors
+#define BLACK_ON_WHITE 0x0F
+#define WOB_GREEN 0x0A
+#define WOB_RED 0x04
+#define WOB_BLUE 0x01
+#define WOB_CYAN 0x03
+#define WOB_MAGENTA 0x05
+#define WOB_YELLOW 0x06
+
+
 /* Screen i/o ports */
 #define REG_SCREEN_CTRL 0x3d4
 #define REG_SCREEN_DATA 0x3d5
