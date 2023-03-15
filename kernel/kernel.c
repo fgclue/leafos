@@ -86,32 +86,17 @@ void execute_command(char *input) {
         print_string("Stopping the CPU. Bye!\n");
         asm volatile("hlt");
     }
-    if (compare_string(input, "HELP") == 0) {
+    if (compare_string(input, "help") == 0) {
         print_string("leafOS Help\n\nHELP - Shows help.\nDISPOSE - Stops the CPU.");
         print_string_color("\nleafOS", WOB_RED);print_string(" >");print_string_color(" /test/", WOB_CYAN);print_string_color(" $ ", WOB_GREEN);
         return;
     }
-    if (compare_string(input, "TOUCH") == 0) {
-        print_string("TOUCH: Creates a file.");
-        print_string_color("\nleafOS", WOB_RED);print_string(" >");print_string_color(" /test/", WOB_CYAN);print_string_color(" $ ", WOB_GREEN);
-        return;
-    }
-    if (compare_string(input, "MKDIR") == 0) {
-        print_string("MKDIR: Makes a directory.");
-        print_string_color("\nleafOS", WOB_RED);print_string(" >");print_string_color(" /test/", WOB_CYAN);print_string_color(" $ ", WOB_GREEN);
-        return;
-    }
-    if (compare_string(input, "LS") == 0) {
-        print_string("LS: Lists all directories and files.");
-        print_string_color("\nleafOS", WOB_RED);print_string(" >");print_string_color(" /test/", WOB_CYAN);print_string_color(" $ ", WOB_GREEN);
-        return;
-    }
-    if (compare_string(input, "CLEAR") == 0) {
+    if (compare_string(input, "clear") == 0) {
         clear_screen();
         print_string_color("\nleafOS", WOB_RED);print_string(" >");print_string_color(" /test/", WOB_CYAN);print_string_color(" $ ", WOB_GREEN);
         return;
     }
-    if (compare_string(input, "EVAL") == 0) {
+    if (compare_string(input, "eval") == 0) {
         print_string_color("Running ", WOB_GREEN);
         print_string("C ");
         print_string_color("Code", WOB_CYAN);

@@ -12,6 +12,8 @@
 /* Public kernel API */
 void print_string(char *string);
 
+void print_string_color(char *string, int color2);
+
 void print_nl();
 
 void clear_screen();
