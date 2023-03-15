@@ -15,6 +15,7 @@ jmp $ ; Never executed
 
 %include "boot/print-16bit.asm"
 %include "boot/print-32bit.asm"
+%include "boot/print-64bit.asm"
 %include "boot/disk.asm"
 %include "boot/gdt.asm"
 %include "boot/switch-to-32bit.asm"
