@@ -3,6 +3,7 @@
 #include "../cpu/timer.h"
 #include "../drivers/display.h"
 #include "../drivers/keyboard.h"
+#include "../drivers/eval.h"
 
 #include "util.h"
 #include "mem.h"
@@ -107,6 +108,15 @@ void execute_command(char *input) {
     }
     if (compare_string(input, "CLEAR") == 0) {
         clear_screen();
+        print_string_color("\nleafOS", WOB_RED);print_string(" >");print_string_color(" /test/", WOB_CYAN);print_string_color(" $ ", WOB_GREEN);
+        return;
+    }
+    if (compare_string(input, "EVAL") == 0) {
+        print_string_color("Running ", WOB_GREEN);
+        print_string("C ");
+        print_string_color("Code", WOB_CYAN);
+        print_string("...\n");
+        eval(input);
         print_string_color("\nleafOS", WOB_RED);print_string(" >");print_string_color(" /test/", WOB_CYAN);print_string_color(" $ ", WOB_GREEN);
         return;
     }
