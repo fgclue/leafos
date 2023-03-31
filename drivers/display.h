@@ -14,7 +14,7 @@
 #define WOB_CYAN 0x03
 #define WOB_MAGENTA 0x05
 #define WOB_YELLOW 0x06
-
+#define ROW 0x4F
 
 /* Screen i/o ports */
 #define REG_SCREEN_CTRL 0x3d4

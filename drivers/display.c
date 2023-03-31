@@ -11,6 +11,8 @@
 #define WOB_CYAN 0x03
 #define WOB_MAGENTA 0x05
 #define WOB_YELLOW 0x06
+#define ROW 0x4F
+
 
 void set_cursor(int offset) {
     offset /= 2;

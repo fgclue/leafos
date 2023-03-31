@@ -15,8 +15,10 @@
 #define WOB_CYAN 0x03
 #define WOB_MAGENTA 0x05
 #define WOB_YELLOW 0x06
+#define ROW 0x4F
 
 void* alloc(int n) {
+    clear_screen();
     int *ptr = (int *) mem_alloc(n * sizeof(int));
     if (ptr == NULL_POINTER) {
         print_string("Memory not allocated.\n");
@@ -37,7 +39,6 @@ void* alloc(int n) {
 }
 
 void start_kernel() {
-    clear_screen();
     print_string("Installing interrupt service routines (ISRs). ");
     isr_install();
     print_string("[");
@@ -77,6 +78,11 @@ void start_kernel() {
     mem_free(ptr2);
 
     mem_free(ptr3);
+
+    print_string("Kernel Loaded!\n");
+
+    print_string("Welcome to ");
+    print_string_color("leafOS beta!\n", ROW);
 
     print_string_color("\nleafOS", WOB_RED);print_string(" >");print_string_color(" /test/", WOB_CYAN);print_string_color(" $ ", WOB_GREEN);
 }
