@@ -4,6 +4,7 @@
 #include "../drivers/display.h"
 #include "../drivers/keyboard.h"
 #include "../drivers/eval.h"
+#include "../drivers/csucks.h"
 
 #include "util.h"
 #include "mem.h"
